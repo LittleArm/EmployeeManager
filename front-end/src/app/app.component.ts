@@ -38,17 +38,6 @@ export class AppComponent implements OnInit{
     ).subscribe();
   }
 
-  public getEmployee(employeeId: number): void {
-    this.employeeService.getEmployee(employeeId).pipe(
-      tap((response: Employee) => {
-        this.editEmployee = response;
-      }), catchError((error: HttpErrorResponse) => {
-        alert(error.message);
-        return [];
-      })
-    ).subscribe();
-  }
-
   public onAddEmployee(addForm: NgForm): void {
     document.getElementById('add-employee-form')?.click();
     this.employeeService.addEmployee(addForm.value).pipe(
